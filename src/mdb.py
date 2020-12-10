@@ -1,9 +1,14 @@
+#!/usr/bin/env python3
+
 import sys
+import os
 import tmdbsimple as tmdb
 
 movie_name = sys.argv[1]
 
-tmdb.API_KEY = 'TMDB_API_KEY'
+TMDB_API_KEY = os.getenv('TMDB_API_KEY')
+
+tmdb.API_KEY = TMDB_API_KEY
 search = tmdb.Search()
 response = search.movie(query=movie_name)
 for s in search.results:
